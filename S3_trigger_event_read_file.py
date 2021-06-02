@@ -13,7 +13,7 @@ def lambda_handler(event, context):
         Response = s3.get_object(Bucket=bucket_name, Key=key_name)
         file_content = Response['Body'].read().decode('utf-8')
         print(file_content)
-    return 'Thanks'
+    return 'Done'
   
   
  ''' # This is how event looks like, it's a dictionary
