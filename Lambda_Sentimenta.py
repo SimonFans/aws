@@ -10,6 +10,14 @@ S3 -> Lambda -> Comprehend
 import boto3
 from pprint import pprint # Better to view the result
 
+# For batch process. Because comprehend only allow to process 5000 bytes per time. 
+def batch_process(para):
+    ls = []
+    while para:
+        ls.append(str(para[:5000]))
+        para = para[5000:]
+    return ls[:25]
+
 def lambda_handler(event, context):
     # TODO implement
     s3 = boto3.client("s3")
@@ -29,6 +37,9 @@ def lambda_handler(event, context):
     keyphrase = comprehend.detect_key_phrases(Text = paragraph, LanguageCode = 'en')
     pprint(keyphrase)
     
+    keyphrase = comprehend.batch_detect_key_phrases(TextList = batch_process(paragraph), LanguageCode = 'en' )
+    pprint(keyphrase)
+    
     return 'Result comes up'
 
 # Result:
@@ -43,3 +54,5 @@ def lambda_handler(event, context):
 
 # Check link here to get more details about the comprehend method:
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/comprehend.html
+    
+
