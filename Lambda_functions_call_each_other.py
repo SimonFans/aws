@@ -1,6 +1,6 @@
 # Goal: Implement to invoke lambda function from another lambda function 
 
-# Pre-condition: Create or use the role with 
+# Pre-condition: Create or use the role with 1) AWSLambdaExecute 2) AWSLambdaRole and 3) AWSLambdaBasicExecutionRole
 
 # Create two functions:
 # Function 1:
