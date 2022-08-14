@@ -1,0 +1,43 @@
+AWS s3api command:
+
+1. Login to okta-aws (make sure login to the AWS account you want to run AWS CLI)
+
+2.  Run below command
+ export AWS_PROFILE=saml 
+
+3. AWS CLI
+
+# AWS credentials:
+/Users/simon.zhao/.aws
+
+# Create subfolder in the current S3 bucket
+aws s3api put-object --bucket <s3 bucket name> --key xm_dir/Gainsight_JSON/CTA/
+
+# List objects in the current S3 bucket
+aws s3api list-objects --bucket  <s3 bucket name>
+
+# Delete objects in the specific S3 bucket
+aws s3api delete-object --bucket  <s3 bucket name> 
+
+# Copy
+aws s3 cp s3:// <s3 bucket name>/GainsightPersonData-2021-07-19-14:09:35.csv s3:// <s3 bucket name>/XM_DIR/GAINSIGHT_CSV/PERSON_DATA/ --recursive --exclude "*" --include "question*"
+
+# Move from bucket to a subfolder
+aws s3 mv s3:// <s3 bucket name>/ s3:// <s3 bucket name>/xm_dir/ --recursive --exclude "*" --include "question*"
+
+# Move from a subfolder to the bucket
+aws s3 mv s3:// <s3 bucket name>/xm_dir/ s3:// <s3 bucket name>/ --recursive --exclude "*" --include "question*"
+
+# uploading individual files to S3
+aws s3 cp <local path> s3://<bucket name>
+
+# Jar dependency:
+https://github.com/snowflakedb/spark-snowflake/releases
+
+
+
+2.7.2 is snowflake version
+2.4 is spark version
+3.12.7 is JDBC version
+v2.7.2-Spark_2.4
+JDBC: 3.12.7
